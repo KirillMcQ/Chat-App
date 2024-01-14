@@ -1,15 +1,43 @@
 import './App.css';
-import Button from '@mui/material/Button';
+import { onAuthStateChanged } from 'firebase/auth';
 import { Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home';
+import Home from './Pages/Home/Home';
 import Authenticate from './Pages/Authenticate';
+import { getAppAuth } from './firebasehelpers';
+import { useState } from 'react';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function App() {
+  const auth = getAppAuth();
+  const [user, setUser] = useState(null);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user);
+    } else {
+      setUser(null);
+    }
+  });
+  console.log(user);
   return (
-    <Routes>
-      <Route exact path='/' element={<Home />} />
-      <Route exact path='/authenticate' element={<Authenticate />} />
-    </Routes>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <Routes>
+        <Route exact path='/' element={<Home user={user} />} />
+        <Route
+          exact
+          path='/authenticate'
+          element={<Authenticate user={user} />}
+        />
+      </Routes>
+    </ThemeProvider>
   );
 }
 

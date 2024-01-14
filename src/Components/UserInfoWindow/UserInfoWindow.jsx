@@ -1,7 +1,11 @@
 import './UserInfoWindow.css';
 
 function UserInfoWindow() {
-  return <h1>User Info Window</h1>;
+  return (
+    <div className='userInfoWindowWrapper'>
+      <h1>User Info Window</h1>
+    </div>
+  );
 }
 
 export default UserInfoWindow;

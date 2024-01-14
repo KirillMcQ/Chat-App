@@ -14,6 +14,12 @@ const darkTheme = createTheme({
   },
 });
 
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
+
 function App() {
   const auth = getAppAuth();
   const [user, setUser] = useState(null);

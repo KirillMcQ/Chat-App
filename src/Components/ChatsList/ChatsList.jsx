@@ -1,7 +1,11 @@
 import './ChatsList.css';
 
 function ChatsList() {
-  return <h1>Chats List</h1>;
+  return (
+    <div className='chatsListWrapper'>
+      <h1>Chats List</h1>
+    </div>
+  );
 }
 
 export default ChatsList;

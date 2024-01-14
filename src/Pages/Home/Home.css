@@ -1,0 +1,8 @@
+.homeGridWrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.homeGridWrapper > div {
+  border: 1px solid white;
+}
